@@ -1,0 +1,1 @@
+"""Sikāi Sathi backend application."""
