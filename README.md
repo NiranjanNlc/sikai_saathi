@@ -1,10 +1,9 @@
 # Sikāi Sathi · सिकाइ साथी
 
-Nepal-first AI learning companion for Grade 8 mathematics. Demo slice: linear equations.
-
+Sikāi Sathi is a Nepal-focused AI learning companion that helps students understand their mistakes instead of simply receiving answers. Using multimodal AI, personalized explanations, and deterministic math verification, it diagnoses misconceptions, guides students through concepts, and checks learning through adaptive practice. Our goal is to make personalized learning more accessible, understandable, and effective for every student.
 > Your learning companion. Your language. Your pace.
 
-**One-liner:** A Nepal-first AI companion that reads a Grade 8 student's handwritten math, names the exact mistake, explains it in Nepali, and proves learning with practice — never rote answers.
+**One-liner till now :** A Nepal-first AI companion that reads a Grade 8 student's handwritten math, names the exact mistake, explains it in Nepali, and proves learning with practice — never rote answers.
 
 ## Problem
 
