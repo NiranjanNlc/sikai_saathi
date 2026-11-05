@@ -163,6 +163,19 @@ def test_diagnose_one_sided_operation(client):
     assert r["error_step_index"] == 1
 
 
+def test_diagnose_image_only_mock_stays_unclear_with_honest_evidence(client):
+    # The mock has no vision: image-only input must stay unclear and say
+    # so plainly (the frontend branches its guidance on this contract).
+    r = client.post("/api/diagnose", json={
+        "student_id": "s12", "problem_id": "demo-3x5-20",
+        "language": "en", "image_base64": "ZmFrZXBpYw==",
+    }).json()
+    assert r["suspected_misconception"] == "unclear"
+    assert r["provider"] == "mock"
+    assert r["error_step_index"] is None
+    assert "type your steps" in r["evidence"]
+
+
 def test_diagnose_unreadable_input_stays_unclear(client):
     r = client.post("/api/diagnose", json={
         "student_id": "s7", "problem_id": "demo-3x5-20", "language": "en",
@@ -193,6 +206,14 @@ def test_assessment_nepali_message_and_hint_without_reveal(client):
     # The answer must not leak into the retry message or the hint.
     assert "5" not in r["message"]
     assert "x = 5" not in r["hint"]
+
+
+def test_index_serves_welcome(client):
+    r = client.get("/")
+    assert r.status_code == 200
+    assert 'id="s0"' in r.text
+    assert 'id="wStart"' in r.text
+    assert 'id="s1"' in r.text
 
 
 def test_progress_reports_streak(client):

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#7f1d1d">
+<meta name="theme-color" content="#173b67">
 <meta name="description" content="Sikāi Sathi — your learning companion for Grade 8 maths, in Nepali or English.">
 <title>Sikāi Sathi — Your learning companion</title>
 <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
@@ -15,15 +15,16 @@
   :root {
     --ink: #1e293b;
     --muted: #475569;
-    --brand: #7f1d1d;
-    --cta: #003893;
-    --cta-dark: #002a70;
+    --brand: #173b67;
+    --cta: #2878c8;
+    --cta-dark: #1f63a8;
     --paper: #ffffff;
-    --wash: #f1f5f9;
+    --wash: #f4f7fb;
     --card-line: #e2e8f0;
     --line: #64748b;
-    --good: #15803d;
-    --good-bg: #dcfce7;
+    --good: #22a06b;
+    --good-ink: #177245;
+    --good-bg: #d9f2e6;
     --warn-ink: #92400e;
     --warn-bg: #fef3c7;
     --warn-line: #d97706;
@@ -61,7 +62,7 @@
     border: 1px solid var(--line); color: var(--muted); background: var(--paper);
     cursor: default; margin: 0; min-height: 32px;
   }
-  .stepper button.done { background: var(--good-bg); border-color: var(--good); color: var(--good); cursor: pointer; }
+  .stepper button.done { background: var(--good-bg); border-color: var(--good); color: var(--good-ink); cursor: pointer; }
   .stepper button.active { background: var(--cta); border-color: var(--cta); color: #fff; font-weight: 700; }
   .stepper button:disabled { opacity: 0.75; cursor: default; }
   .stepper-compact { display: none; margin: 0.75rem 0 0.25rem; }
@@ -114,9 +115,9 @@
   input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: var(--err); border-width: 2px; }
   .banner { border-radius: 6px; padding: 0.6rem 0.8rem; margin: 0.75rem 0; font-size: 0.95rem; }
   .banner[hidden] { display: none; }
-  .banner.error { background: var(--err-bg); border: 1px solid #fca5a5; color: var(--brand); }
+  .banner.error { background: var(--err-bg); border: 1px solid #fca5a5; color: var(--err); }
   .banner.info { background: var(--note-bg); border: 1px solid var(--note-line); color: var(--note-ink); }
-  .banner.ok { background: #f0fdf4; border: 1px solid #86efac; color: var(--good); }
+  .banner.ok { background: #f0fdf4; border: 1px solid #86efac; color: var(--good-ink); }
   .banner.warn { background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); }
   .status { font-size: 0.95rem; color: var(--note-ink); background: var(--note-bg);
     border: 1px solid var(--note-line); border-radius: 6px; padding: 0.5rem 0.8rem; margin: 0.75rem 0; }
@@ -170,6 +171,37 @@
   .actionbar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.4rem; }
   .actionbar .btn { margin-top: 0.6rem; }
   .btnrow { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  #s0h { font-size: 1.7rem; line-height: 1.25; margin-bottom: 0.4rem; }
+  .w-top { display: flex; justify-content: flex-end; margin-bottom: 0.4rem; }
+  .w-demo { background: var(--wash); border: 1px solid var(--card-line); border-radius: 10px; padding: 0.9rem 1rem; margin: 0.9rem 0 0.2rem; }
+  .w-demo-title { margin: 0 0 0.5rem; font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+  .w-demo .steps { background: #fff; border: 1px solid var(--card-line); margin: 0; }
+  .w-fix { margin: 0.6rem 0 0; font-weight: 600; color: var(--good-ink); }
+  .w-tick { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--good); color: #fff; font-size: 0.85rem; margin-right: 0.4rem; }
+  .how { list-style: none; margin: 0.6rem 0 0; padding: 0; counter-reset: how; }
+  .how li { position: relative; margin: 0; padding: 0 0 0.95rem 2.7rem; }
+  .how li:last-child { padding-bottom: 0.1rem; }
+  .how li strong { display: block; }
+  .how li span { color: var(--muted); font-size: 0.95rem; }
+  .how li::before {
+    counter-increment: how; content: counter(how);
+    position: absolute; left: 0; top: 0.1rem; width: 1.75rem; height: 1.75rem;
+    border-radius: 50%; background: var(--brand); color: #fff;
+    font-weight: 700; font-size: 0.92rem; line-height: 1.75rem; text-align: center;
+  }
+  .how li::after {
+    content: ""; position: absolute; left: 0.84rem; top: 2rem; bottom: 0;
+    width: 2px; background: var(--card-line);
+  }
+  .how li:last-child::after { display: none; }
+  .trust { font-weight: 600; color: var(--good-ink); }
+  .trust::before { content: "✓ "; }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; max-width: 22rem; }
+  .seg .btn { flex: 1; margin: 0; border: 0; border-radius: 0; background: #fff; }
+  .seg .btn + .btn { border-left: 1px solid var(--line); }
+  .seg .lang-pick[aria-pressed="true"] { background: var(--cta); color: #fff; }
+  #wStart { width: 100%; min-height: 52px; font-size: 1.05rem; font-weight: 700; }
+  .btn.go::after { content: " \2192"; }
   @media (max-width: 640px) {
     header { padding: 0.5rem 0.9rem; }
     header h1 { font-size: 1.05rem; }
@@ -203,8 +235,36 @@
   <div class="banner error" id="err" role="alert" hidden></div>
   <div class="banner info" id="info" role="status" hidden></div>
 
+  <!-- Screen 0: Welcome -->
+  <section class="card visible" id="s0" aria-labelledby="s0h">
+    <div class="w-top">
+      <div class="seg" id="wLangGroup" role="group">
+        <button type="button" class="btn secondary small lang-pick" id="wNe">नेपाली</button>
+        <button type="button" class="btn secondary small lang-pick" id="wEn">English</button>
+      </div>
+    </div>
+    <h2 id="s0h" tabindex="-1" data-i18n="wTitle">Don't just find the answer. Understand your mistakes.</h2>
+    <p class="lede" data-i18n="wLede">Upload your handwritten math solution.</p>
+    <div class="w-demo">
+      <p class="w-demo-title" data-i18n="wDemoTitle">Your solution, checked line by line</p>
+      <ol class="steps">
+        <li>3x + 5 = 20</li>
+        <li>3x = 15</li>
+        <li class="badstep">x = 15 <span class="badflag" id="wDemoFlag"></span></li>
+      </ol>
+      <p class="w-fix"><span class="w-tick" aria-hidden="true">✓</span><span id="wDemoNote"></span></p>
+    </div>
+    <div class="actionbar">
+      <button type="button" class="btn primary go" id="wStart" data-i18n="wStart">Start Your Journey</button>
+    </div>
+    <h3 data-i18n="wHowTitle">How Sikāi Sathi helps</h3>
+    <ol class="how" id="wHow"></ol>
+    <p class="trust" data-i18n="wTrust">Correctness is checked by maths, not guesses.</p>
+    <p class="hint" data-i18n="wScope">Demo slice: one-variable linear equations.</p>
+  </section>
+
   <!-- Screen 1: Submit -->
-  <section class="card visible" id="s1" aria-labelledby="s1h">
+  <section class="card" id="s1" aria-labelledby="s1h">
     <h2 id="s1h" tabindex="-1" data-i18n="s1title">1 · Check my work</h2>
     <p class="lede" data-i18n="intro">Snap your copy or type your steps — Sathi finds the exact line where things went wrong.</p>
     <form id="f1" novalidate>
@@ -227,6 +287,8 @@
         <button type="button" role="tab" id="tabType" aria-selected="false" aria-controls="panelType" data-i18n="typeTab">Type steps</button>
       </div>
       <div class="tabpanel" role="tabpanel" id="panelPhoto" aria-labelledby="tabPhoto">
+        <p class="banner info" id="photoNotice" role="status" hidden></p>
+        <div class="btnrow"><button type="button" class="btn secondary small" id="photoGoType" hidden></button></div>
         <div class="dropzone-wrap">
           <label class="dropzone" for="photo"><span data-i18n="photoLabel">Take a photo of your copy</span><small data-i18n="photoHint">Clear, straight, good light</small></label>
           <input type="file" id="photo" accept="image/*" capture="environment" aria-describedby="ePhoto">
@@ -348,6 +410,16 @@
 const STR = {
 en: {
   tagline: "Your learning companion. Your language. Your pace.",
+  wTitle: "Don't just find the answer. Understand your mistakes.",
+  wLede: "Upload your handwritten math solution. Sikāi Sathi identifies your mistakes, explains why they happened, and helps you learn from them.",
+  wScope: "Demo slice: one-variable linear equations like 3x + 5 = 20.",
+  wDemoTitle: "Your solution, checked line by line",
+  wDemoNote: "You subtracted correctly — now divide both sides by 3 to get x = 5.",
+  wHowTitle: "How Sikāi Sathi helps",
+  wHow: [["Upload your work", "Take a picture of your handwritten solution."], ["Understand your mistake", "AI identifies where your reasoning went wrong."], ["Learn and improve", "Get an explanation and practice similar problems."]],
+  wTrust: "Correctness is checked by maths, not guesses — the AI only explains.",
+  wLang: "Choose your language",
+  wStart: "Start Your Journey",
   steps: ["Submit", "Diagnosis", "Learn", "Practice"],
   stepOf: (n) => `Step ${n} of 4`,
   pinned: (eq) => `Problem: ${eq}`,
@@ -438,6 +510,9 @@ en: {
   practiceFail: "Couldn't get a question — try again.",
   checkFail: "Couldn't check the answer — try again.",
   fallbackNote: "AI helper unavailable — the maths check still ran.",
+  photoNoVision: "Photo reading needs the AI helper, which isn't connected right now — type your steps instead, one per line.",
+  photoNotice: "The AI helper isn't connected, so photos can't be read yet. Type your steps for a real check.",
+  photoGoType: "Type steps instead",
   footStudent: "Sikāi Sathi · correctness is checked by maths, the teacher explains in your language.",
   op_subtract: (v) => `Subtract ${v} from BOTH sides`,
   op_add: (v) => `Add ${v} to BOTH sides`,
@@ -447,6 +522,16 @@ en: {
 },
 ne: {
   tagline: "तिम्रो सिकाइ साथी। तिम्रो भाषा। तिम्रो गति।",
+  wTitle: "गल्तीबाटै सिकौँ, गणितमा अगाडि बढौँ।",
+  wLede: "तपाईंको गणितीय समाधानको फोटो खिच्नुहोस्। सिकाइ साथीले तपाईंको गल्ती पहिचान गरी, किन गल्ती भयो भनेर सरल भाषामा बुझाउँछ।",
+  wScope: "डेमो: 3x + 5 = 20 जस्ता एक चल भएका रैखिक समीकरण।",
+  wDemoTitle: "तपाईंको समाधान, हरेक लाइन जाँच",
+  wDemoNote: "घटाउने काम सही भयो — अब x = 5 पाउन दुवै पक्षलाई 3 ले भाग गर्नुहोस्।",
+  wHowTitle: "सिकाइ साथीले कसरी मद्दत गर्छ",
+  wHow: [["आफ्नो काम बुझाउनुहोस्", "हस्तलिखित समाधानको फोटो खिच्नुहोस्।"], ["गल्ती बुझ्नुहोस्", "तपाईंको सोचाइ कहाँ बिग्रियो भनेर AI ले देखाउँछ।"], ["सिक्नुहोस् र सुधार गर्नुहोस्", "सरल व्याख्या पढ्नुहोस् र यस्तै प्रश्न अभ्यास गर्नुहोस्।"]],
+  wTrust: "सही-गलत गणितले जाँच्छ, अनुमानले होइन — AI ले बुझाउने मात्र हो।",
+  wLang: "भाषा छान्नुहोस्",
+  wStart: "आफ्नो यात्रा सुरु गर्नुहोस्",
   steps: ["बुझाऊ", "निदान", "सिक", "अभ्यास"],
   stepOf: (n) => `चरण ${n} / 4`,
   pinned: (eq) => `प्रश्न: ${eq}`,
@@ -537,6 +622,9 @@ ne: {
   practiceFail: "प्रश्न ल्याउन सकिएन — फेरि प्रयास गर।",
   checkFail: "उत्तर जाँच्न सकिएन — फेरि प्रयास गर।",
   fallbackNote: "AI सहयोगी उपलब्ध छैन — गणित जाँच भने चल्यो।",
+  photoNoVision: "फोटो पढ्न AI सहयोगी चाहिन्छ, त्यो अहिले जोडिएको छैन — चरणहरू हरेक लाइनमा टाइप गर्नुहोस्।",
+  photoNotice: "AI सहयोगी जोडिएको छैन, त्यसैले फोटो पढ्न सकिँदैन। वास्तविक जाँचका लागि चरणहरू टाइप गर्नुहोस्।",
+  photoGoType: "चरण टाइप गर्नुहोस्",
   footStudent: "सिकाइ साथी · सही-गलत गणितले जाँच्छ, शिक्षकले तिम्रो भाषामा बुझाउँछन्।",
   op_subtract: (v) => `दुवै पक्षबाट ${v} घटाऊ`,
   op_add: (v) => `दुवै पक्षमा ${v} जोड`,
@@ -570,11 +658,14 @@ const mathLoc = (s) => {
 };
 /* ---------- state ---------- */
 const state = {
-  screen: "s1", visited: new Set(["s1"]),
+  screen: "s0", visited: new Set(["s0"]),
   diagnosis: null, tutor: null, tutorPending: null, visual: null, vi: 0,
   practice: null, seenQ: [], tries: 0, lastCorrect: null, lastStreak: 0,
-  problems: [], progress: null, activeTab: "photo",
+  problems: [], progress: null, activeTab: "photo", usedPhoto: false,
 };
+/* Whether photo OCR can work: /api/health says which diagnose provider
+   is live. The mock has no vision, so the photo path always fails. */
+let visionAvailable = true;
 const SCREEN_IDS = ["s1", "s2", "s3", "s4"];
 
 /* Profile: name once, kept on the device. A per-device id avoids the
@@ -593,6 +684,38 @@ const sid = () => {
   return v;
 };
 
+/* ---------- welcome ---------- */
+function renderWelcome() {
+  const ol = $("wHow");
+  ol.innerHTML = "";
+  (t("wHow") || []).forEach(([title, desc]) => {
+    const li = document.createElement("li");
+    const st = document.createElement("strong");
+    st.textContent = title;
+    li.appendChild(st);
+    const sp = document.createElement("span");
+    sp.textContent = desc;
+    li.appendChild(sp);
+    ol.appendChild(li);
+  });
+  ol.setAttribute("lang", lang());
+  $("wDemoFlag").textContent = t("badFlag");
+  const note = $("wDemoNote");
+  note.textContent = t("wDemoNote");
+  note.setAttribute("lang", lang());
+  $("wLangGroup").setAttribute("aria-label", t("wLang"));
+  $("wNe").setAttribute("aria-pressed", lang() === "ne" ? "true" : "false");
+  $("wEn").setAttribute("aria-pressed", lang() === "en" ? "true" : "false");
+}
+function pickLang(v) {
+  $("lang").value = v;
+  applyI18n();
+  saveSession();
+}
+$("wNe").addEventListener("click", () => pickLang("ne"));
+$("wEn").addEventListener("click", () => pickLang("en"));
+$("wStart").addEventListener("click", () => show("s1"));
+
 /* ---------- i18n apply ---------- */
 function applyI18n() {
   document.documentElement.lang = lang();
@@ -606,6 +729,8 @@ function applyI18n() {
   $("preview").alt = t("photoLabel");
   $("numToggle").textContent = numerals === "ne" ? "१२३" : "123";
   $("numToggle").setAttribute("aria-pressed", numerals === "ne" ? "true" : "false");
+  renderWelcome();
+  renderPhotoNotice();
   renderStepper();
   renderPinned();
   if (state.diagnosis) renderDiagnosis();
@@ -619,6 +744,7 @@ function applyI18n() {
 
 /* ---------- navigation ---------- */
 function renderStepper() {
+  if (state.screen === "s0") return; /* welcome: stepper hidden */
   const el = $("stepper");
   el.innerHTML = "";
   const names = STR[lang()].steps;
@@ -641,8 +767,9 @@ function renderStepper() {
   $("compactBar").style.width = `${((cur + 1) / 4) * 100}%`;
 }
 function renderPinned() {
-  const p = state.problems.find((q) => q.problem_id === $("problem").value);
   const bar = $("pinned");
+  if (state.screen === "s0") { bar.hidden = true; return; }
+  const p = state.problems.find((q) => q.problem_id === $("problem").value);
   if (!p) { bar.hidden = true; return; }
   bar.hidden = false;
   bar.textContent = "";
@@ -654,7 +781,11 @@ function renderPinned() {
 function show(id) {
   state.screen = id;
   state.visited.add(id);
-  SCREEN_IDS.forEach((s) => $(s).classList.toggle("visible", s === id));
+  ["s0", ...SCREEN_IDS].forEach((s) => $(s).classList.toggle("visible", s === id));
+  /* Welcome is outside the 4-step flow: no stepper until Start. */
+  const onWelcome = id === "s0";
+  $("stepper").style.display = onWelcome ? "none" : "";
+  document.querySelector(".stepper-compact").style.display = onWelcome ? "none" : "";
   renderStepper();
   renderPinned();
   clearBanners();
@@ -764,7 +895,7 @@ function saveSession() {
       steps: $("steps").value, tab: state.activeTab,
       diagnosis: state.diagnosis, tutor: state.tutor,
       practice: state.practice, seenQ: state.seenQ, tries: state.tries,
-      progress: state.progress,
+      progress: state.progress, usedPhoto: state.usedPhoto,
     }));
   } catch (_) {}
 }
@@ -776,11 +907,12 @@ function restoreSession() {
     if (s.steps) $("steps").value = s.steps;
     if (s.tab) setTab(s.tab);
     Object.assign(state, {
-      screen: SCREEN_IDS.includes(s.screen) ? s.screen : "s1",
+      screen: (s.screen === "s0" || SCREEN_IDS.includes(s.screen)) ? s.screen : "s0",
       diagnosis: s.diagnosis || null, tutor: s.tutor || null,
       practice: s.practice || null, seenQ: s.seenQ || [],
       tries: s.tries || 0, progress: s.progress || null,
-      visited: new Set(s.visited || ["s1"]),
+      visited: new Set(s.visited || ["s0"]),
+      usedPhoto: !!s.usedPhoto,
     });
     if (s.problem) $("problem").value = s.problem;
     return true;
@@ -825,6 +957,29 @@ $("exampleBtn").addEventListener("click", () => {
 });
 $("problem").addEventListener("change", () => { renderPinned(); saveSession(); });
 $("lang").addEventListener("change", () => { applyI18n(); saveSession(); });
+
+/* Upfront honesty: when no vision provider is live, the photo path is
+   guaranteed to fail — say so on the photo panel before the attempt. */
+async function checkVision() {
+  try {
+    const h = await api("/api/health");
+    visionAvailable = h.diagnose_provider === "spark";
+  } catch (_) {
+    visionAvailable = false;
+  }
+  renderPhotoNotice();
+}
+function renderPhotoNotice() {
+  const show = !visionAvailable;
+  $("photoNotice").hidden = !show;
+  $("photoGoType").hidden = !show;
+  if (show) {
+    $("photoNotice").textContent = t("photoNotice");
+    $("photoNotice").setAttribute("lang", lang());
+    $("photoGoType").textContent = t("photoGoType");
+  }
+}
+$("photoGoType").addEventListener("click", () => setTab("type"));
 
 async function loadProblems() {
   try {
@@ -881,6 +1036,7 @@ async function submitWork() {
      longer silently sends the typed steps. */
   const usePhoto = photoMode && hasPhoto;
   const useSteps = !photoMode && stepsVal;
+  state.usedPhoto = usePhoto;
   if (!usePhoto && !useSteps) {
     if (photoMode && stepsVal) {
       fieldError($("photo"), $("ePhoto"), t("needPhoto"));
@@ -911,7 +1067,9 @@ async function submitWork() {
     state.tutor = null;
     state.visual = null;
     renderDiagnosis();
-    if (String(d.provider).includes("fallback")) info(t("fallbackNote"));
+    /* The "maths check still ran" note is only true for typed steps —
+       a photo has no deterministic check behind it. */
+    if (String(d.provider).includes("fallback") && !state.usedPhoto) info(t("fallbackNote"));
     show("s2");
     prefetchTutor();
     prefetchVisual();
@@ -940,7 +1098,14 @@ function renderDiagnosis() {
   $("dMismatch").hidden = !d.problem_mismatch;
   if (d.problem_mismatch) $("dMismatch").textContent = t("mismatchWarn");
   $("dUnreadable").hidden = !(unclear && !d.problem_mismatch);
-  if (unclear && !d.problem_mismatch) $("dUnreadableMsg").textContent = t("unreadableMsg");
+  if (unclear && !d.problem_mismatch) {
+    /* A photo + mock provider never had vision: say so plainly instead
+       of blaming the photo's quality. */
+    const noVision = state.usedPhoto && String(d.provider).startsWith("mock");
+    const msg = $("dUnreadableMsg");
+    msg.textContent = noVision ? t("photoNoVision") : t("unreadableMsg");
+    msg.setAttribute("lang", lang());
+  }
   $("dBody").style.display = unclear ? "none" : "";
   if (!unclear) {
     const ol = $("dSteps");
@@ -1387,6 +1552,7 @@ $("footDev").textContent = "debug: deterministic Python decides correctness · L
   if (savedName) $("student").value = savedName;
   const had = restoreSession();
   applyI18n();
+  checkVision();
   loadProblems().then(() => {
     renderPinned();
     if (had && state.diagnosis && (state.screen === "s2" || state.visited.has("s2"))) {
@@ -1395,7 +1561,7 @@ $("footDev").textContent = "debug: deterministic Python decides correctness · L
     if (had && state.tutor) renderTutor();
     if (had && state.practice) renderQuestion();
     if (had && state.progress) renderProgress();
-    show(had && state.visited.has(state.screen) ? state.screen : "s1");
+    show(had && state.visited.has(state.screen) ? state.screen : "s0");
     if (state.screen === "s4" && !state.practice) show("s1");
   });
 })();
