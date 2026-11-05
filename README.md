@@ -96,3 +96,7 @@ uv run pytest -q
 uv run python scripts/eval_language.py            # mock structure check
 uv run python scripts/eval_language.py --provider fireworks   # needs key; human-grade Nepali
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

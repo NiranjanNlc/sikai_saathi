@@ -208,6 +208,12 @@ def test_assessment_nepali_message_and_hint_without_reveal(client):
     assert "x = 5" not in r["hint"]
 
 
+def test_license_served(client):
+    r = client.get("/license")
+    assert r.status_code == 200
+    assert "MIT License" in r.text
+
+
 def test_index_serves_welcome(client):
     r = client.get("/")
     assert r.status_code == 200

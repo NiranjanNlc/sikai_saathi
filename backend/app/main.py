@@ -291,3 +291,13 @@ if FRONTEND_DIR.exists():
     @app.get("/", include_in_schema=False)
     def index() -> FileResponse:
         return FileResponse(str(FRONTEND_DIR / "index.html"))
+
+
+LICENSE_PATH = FRONTEND_DIR.parent / "LICENSE"
+
+
+@app.get("/license", include_in_schema=False)
+def license_text() -> FileResponse:
+    if not LICENSE_PATH.is_file():
+        raise HTTPException(status_code=404, detail="License not found")
+    return FileResponse(str(LICENSE_PATH), media_type="text/plain")
